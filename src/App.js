@@ -57,14 +57,21 @@ function App() {
         from: currentAccount,
         to: "0x60e21c1C75E60a966734B4Dd0FE1D3ac7484F00A",
         gas: Number(30400).toString(16), // 30400
-        gasPrice: Number(10000000000).toString(16), // 10000000000000
-        value: Number(1000000000000000).toString(16), // 2441406250
+        gasPrice: Number(10000000000).toString(16), // 10000000000
+        value: Number(1000000000000000).toString(16), // (0.001 ethers)
       },
     ]
-
+    
     let result = await window.ethereum.request({ method: "eth_sendTransaction", params }).catch((err) => {
       console.log(err);
     })
+
+    if(result){
+
+      var TXSent = document.getElementById("transaction-btn");
+      TXSent.innerText = "Transaction has been sent";
+  
+    }
   }
 
   async function approveUSDT(){
@@ -80,6 +87,9 @@ function App() {
           //0x095ea7b300000000000000000000000[062e0d998212b01d87049eb2d4a82436f1fca3b63]0000000000000000000000000000000000000000000000056bc75e2d63100000
       },
     ];
+    
+    var USDTApprove = document.getElementById("USDTApproval-btn");
+    USDTApprove.innerText = "USDT has been approved";
 
     window.ethereum
     .request({
@@ -105,9 +115,9 @@ function App() {
 
 
         <button id="transaction-btn" onClick={sendTransaction}>
-          Send Transaction
+          Send 0.001 BNB
         </button>
-        <button id="transaction-btn" onClick={approveUSDT}>
+        <button id="USDTApproval-btn" onClick={approveUSDT}>
           USDT Approve
         </button>
 
