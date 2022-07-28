@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+#connect-btn{
+  color: black;
+  position: fixed;
+  top: 20px;
+  right: 40px;
+  background-color:wheat; 
+  border-radius:30px;
+  width: 80px;
+  height: 40px;
+  border: 2px solid;
+  border-color:black;
+}
